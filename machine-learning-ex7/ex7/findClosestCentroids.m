@@ -22,8 +22,16 @@ idx = zeros(size(X,1), 1);
 %
 
 
+calc = zeros(K,1);
 
-
+% ugly code detected!!
+for i=1:size(X,1),
+  for k=1:K,
+    calc(k) = sum((X(i,:) - centroids(k,:)).^2);  
+    end;
+    [val,index] = min(calc);
+    idx(i) = index;
+end;
 
 
 
